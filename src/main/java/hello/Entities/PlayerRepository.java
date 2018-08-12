@@ -1,12 +1,10 @@
 package hello.Entities;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface  PlayerRepository extends MongoRepository<Player, String> {
-
-    public Player findByName(String name);
+public interface  PlayerRepository extends CrudRepository<Player, Long> {
 
 
 }

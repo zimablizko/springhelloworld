@@ -1,15 +1,22 @@
 package hello.Entities;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+@Entity
 public class Player {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
 
     private String name;
+    private String email;
 
-    public Player() {}
+    protected Player() {}
 
     public Player(String name) {
         this.name = name;
@@ -18,15 +25,15 @@ public class Player {
     @Override
     public String toString() {
         return String.format(
-                "Customer[id=%s, name='%s']",
-                id, name);
+                "Customer[id=%s, name='%s',email='%email']",
+                id, name,email);
     }
 
-    public String getId() {
+    public Long  getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long  id) {
         this.id = id;
     }
 
@@ -36,5 +43,13 @@ public class Player {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
